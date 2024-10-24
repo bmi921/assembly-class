@@ -1,0 +1,32 @@
+MAIN START
+     LD GR1,=4
+     LD GR2,=5
+
+     LD GR3,GR1 
+     LD GR4,GR2
+     
+     LD GR0,=0
+     LD GR6,=0  ; ゼロ比較のときに使用
+
+EXCUTE  LD GR1,=1
+     AND GR1,GR4
+
+     
+
+COMPARE CPA GR1,GR6
+     JZE ZERO
+
+     ADDA GR0,GR3
+     
+  
+ZERO SLA GR3,1
+     SRA GR4,1
+
+     CPA GR4,GR6
+     JPL EXCUTE  ; r1 > r2
+     RET
+
+
+     END
+
+    

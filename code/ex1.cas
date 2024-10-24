@@ -1,0 +1,21 @@
+MAIN   START
+       LAD  GR0,0 
+          LAD     GR2,1 
+          LAD     GR3,8 
+          CALL    SUB
+          RET
+
+SUB       RPUSH
+          SLA     GR2,1 
+          ST      GR2,WK 
+          SLA     GR2,2 
+          ADDA    GR2,WK 
+WK        DS      1
+
+          ADDA    GR2,GR3
+          ADDA    GR0,GR2
+          RPOP
+
+          RET
+
+          END

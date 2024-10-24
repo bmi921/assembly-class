@@ -1,0 +1,47 @@
+MAIN START 
+     LD GR1,=3 ;x
+     LD GR2,=4 ;y
+
+     LD GR0,=0 ;result
+     LD GR5,GR2  ;counter
+
+     LD GR6,=0 ; 0比較用
+     
+     LD GR3,GR1 ;掛け算用
+     LD GR4,=1
+
+
+LOOP CPA GR5,GR6 
+     JMI  END
+     LD GR7,=0
+     CALL EXCUTE 
+     SUBA GR5,=1
+     JPL  LOOP
+
+END  LD GR0,GR7  
+     RET
+
+EXCUTE  LD GR1,=1
+     AND GR1,GR4
+
+     
+
+COMPARE CPA GR1,GR6
+     JZE ZERO
+
+     ADDA GR7,GR3
+     
+  
+ZERO SLA GR3,1
+     SRA GR4,1
+
+     CPA GR4,GR6
+     JPL EXCUTE  ; r1 > r2
+     LD GR3,=3 
+     LD GR4,GR7
+     RET
+
+
+     END
+
+
