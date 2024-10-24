@@ -1,0 +1,12 @@
+MAIN     START
+         LAD   GR0,0
+         LAD   GR1,3
+         ADDA  GR1,GR1
+         SUBA  GR1,=1
+
+LOOP     ADDA GR0,GR1
+         SUBA GR1,=2
+         JPL  LOOP
+
+         RET
+         END

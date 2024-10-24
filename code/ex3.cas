@@ -1,0 +1,30 @@
+MAIN START
+     RPUSH
+     LD GR1,=30
+     LD GR2,=84
+
+     LD GR3,GR1
+     LD GR4,GR2
+
+     LD GR0,=0
+
+COMPARE    CPA GR3,GR4
+     JZE EQUAL  ; r1 = r1
+     JPL PLUS   ; r1 > r2
+     JMI MINUS  ; r1 < r2
+     RET
+
+EQUAL LD GR0,GR4
+     RPOP
+     RET
+PLUS  SUBA GR3,GR4
+     JUMP COMPARE
+     RET
+MINUS SUBA GR4,GR3
+     JUMP COMPARE
+     RET
+
+     END
+
+
+    
